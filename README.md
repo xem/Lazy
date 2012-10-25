@@ -1,4 +1,4 @@
 Lazy.js
 =======
 
-Javascript most useful shortcuts
+Main page: http://xem.github.com/Lazy/
