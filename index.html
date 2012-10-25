@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Lazy</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    html { background: #123456; }
+    body { background: #abcdef; width: 550px; margin: 0 auto; padding: 20px; font-family: arial; }
+    h1, h2, h3 { text-align: center; }
+    h3 { color: #fff; }
+    a { color: #aa0000; padding: 3px; }
+    a.download { color: #fff; display: block; width: 200px; line-height: 50px; margin: 0 auto; text-align: center; background: #527580; border-radius: 5px; box-shadow: 5px 5px 5px #555; border: 2px solid #123456; }
+    div { background: #fff; width: 300px; height: 20px; margin: 0 auto; }
+    span.code { border: 1px dotted red; background: #fff; padding: 2px 5px; font-family: monospace; }
+    p { line-height: 25px; }
+    p.center { text-align: center; }
+    div#demo { position: fixed; _position: relative; right: 0; top: 50%; margin-top: -190px; background: #000; width: 150px; height: 380px; text-align: center; color: #fff; }
+    div#demo * { color: #000; width: 100px; height: 20px; margin: 10px; padding: 20px 0; display: inline-block; }
+    div#demo a { background: #527580; color: #fff; }
+    div.class { background: #def; }
+  </style>
+  <script>
+    function example1(){alert("clicked")}
+    function example2(){alert("resized (press Enter to quit)")}
+  </script>
+</head>
+<body>
+  <br>
+  <h1>Lazy</h1>
+  <br>
+  <h3>Too lazy to write long cross-browser JavaScript?</h3>
+  <h3>Too lazy to use jQuery?</h3>
+  <h3>Try Lazy!</h3>
+  <br>
+  <br>
+  <a class=download href="./lazy.min.js">Download (0.5Kb)</a>
+  <br>
+  <p class=center><a href="http://github.com/xem/Lazy">Fork me on Github</a></p>
+  <br>
+  <br>
+  <h2>JS Objects</h2>
+  <br>
+  <p>
+    Lazy.js provides 6 shortcuts for the most used JavaScript native objects:
+    <br>
+    <br>
+    &bull; <span class=code>$w</span> is a shortcut for the window object.
+    <br>
+    &bull; <span class=code>$n</span> is a shortcut for the navigator object.
+    <br>
+    &bull; <span class=code>$d</span> is a shortcut for the document object.
+    <br>
+    &bull; <span class=code>$r</span> is a shortcut for the root element (&lt;html&gt;).
+    <br>
+    &bull; <span class=code>$h</span> is a shortcut for the &lt;head&gt; element.
+    <br>
+    &bull; <span class=code>$b</span> is a shortcut for the &lt;body&gt; element.
+  </p>
+  <br>
+  <br>
+  <h2>JS Functions</h2>
+  <br>
+  <p>
+    Lazy.js provides 4 shortcuts for the most useful JavaScript functionnalities:
+    <br>
+    <br>
+    &bull; <b>$(query)</b> is a minimal DOM selector.
+    <br>
+    <br>
+    Examples:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>$("#id")</span> returns the element with the id "id". <a href="javascript:;" onclick='alert("the text in this element is: " + $("#id").innerHTML)'>try it!</a>
+    <br>
+    &nbsp; &nbsp; - <span class=code>$(".class")</span> returns the elements with the class "class". <a href="javascript:;" onclick='alert($(".class").length + " elements have this class")'>try it!</a>
+    <br>
+    &nbsp; &nbsp; - <span class=code>$("div")</span> returns the div elements. <a href="javascript:;" onclick='alert($("div").length + " elements have this tag name")'>try it!</a>
+    <br>
+    <br>
+    <br>
+    &bull; <b>on(object, event, func)</b> is an event binder.
+    <br>
+    <br>
+    Examples:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>on($("#id"), "click", example1)</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; sets an alert when the element "id" is clicked. <a href="javascript:;" onclick='on($("#id"), "click", example1); alert("You can now click on the first block in the demo zone!")'>try it!</a>
+    <br>
+    &nbsp; &nbsp; - <span class=code>on($w, "resize", example2)</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; sets an alert when the window is resized. <a href="javascript:;" onclick='on($w, "resize", example2); alert("You can resize your window now!")'>try it!</a>
+    <br>
+    <br>
+    <br>
+    &bull; <b>off(object, event, func)</b> is an event unbinder.
+    <br>
+    <br>
+    Examples:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>off($("#id"), "click", example1)</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; unsets an alert when the element "id" is clicked. <a href="javascript:;"  onclick='off($("#id"), "click", example1); alert("Nothing happens if you click the first block in the demo zone!")'>try it!</a>
+    <br>
+    &nbsp; &nbsp; - <span class=code>off($w, "resize", example2)</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; unsets an alert when the window is resized. <a href="javascript:;" onclick='off($w, "resize", example2); alert("Nothing happens if you resize your window!")'>try it!</a>
+    <br>
+    <br>
+    <br>
+    &bull; <b>css(element, property[, value])</b> is a CSS getter and setter.
+    <br>
+    <br>
+    Examples:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>css($("#id"), "width")</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; returns the computed width of the element "id". <a href="javascript:;" onclick='alert(css($("#id"), "width"))'>try it!</a>
+    <br>
+    &nbsp; &nbsp; - <span class=code>css($("#id"), "width", "50px")</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; sets a 50px width to the element "id". <a href="javascript:;" onclick='css($("#id"), "width", "50px")'>try it!</a>
+  </p>
+  <br>
+  <div id=demo>
+    div.demo
+    <br>
+    <a href="javascript:;" id="id">a#id</a>
+    <div class="class">div.class</div>
+    <div class="class">div.class</div>
+    <div>another div</div>
+  </div>
+  <br>
+  <br>
+  <p class=center><a href="http://twitter.com/MaximeEuziere">@MaximeEuziere</a></p>
+  <br>
+  <script src=lazy.js></script>
+</body>
+</html>
