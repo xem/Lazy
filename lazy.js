@@ -85,34 +85,8 @@ function css(element, prop, value){
   }
 }
 
-// iterator
-function isNodeList(nodes){
-  var result = Object.prototype.toString.call(nodes);
-  if(result === '[object HTMLCollection]' || result === '[object NodeList]'){
-    return true;
-  }
-  if(typeof(nodes) != 'object'){
-      return false;
-  }
-  if(!('length' in nodes) || !('item' in nodes)){
-    return false;
-  }
-  try{
-    if(nodes(0) === null || (nodes(0) && nodes(0).tagName)) return true;
-  }
-  catch(e){
-    return false;
-  }
-  return false;
-}
-
 function each(array, func){
-  if(isNodeList(array)){
-    for(var i = 0; i < array.length; i++){
-      func.call(array[i]);
-    }
-  }
-  else{
-    func.call(array);
+  for(var i = 0; i < array.length; i++){
+    func.call(array[i]);
   }
 }
