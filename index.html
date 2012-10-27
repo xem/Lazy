@@ -6,7 +6,7 @@
   <style>
     * { margin: 0; padding: 0; }
     html { background: #123456; }
-    body { background: #abcdef; width: 550px; margin: 0 auto; padding: 20px; font-family: arial; }
+    body { background: #abcdef; width: 570px; margin: 0 auto; padding: 20px; font-family: arial; }
     h1, h2, h3 { text-align: center; }
     h3 { color: #fff; }
     a { color: #aa0000; padding: 3px; }
@@ -15,8 +15,8 @@
     span.code { border: 1px dotted red; background: #fff; padding: 2px 5px; font-family: monospace; }
     p { line-height: 25px; }
     p.center { text-align: center; }
-    div#demo { position: fixed; _position: relative; right: 0; top: 50%; margin-top: -190px; background: #000; width: 150px; height: 380px; text-align: center; color: #fff; }
-    div#demo * { color: #000; width: 100px; height: 20px; margin: 10px; padding: 20px 0; display: inline-block; }
+    div#demo { position: fixed; _position: relative; right: 0; top: 50%; margin-top: -175px; background: #000; width: 150px; height: 350px; text-align: center; color: #fff; border-radius: 5px 0 0 5px; }
+    div#demo * { color: #000; width: 100px; height: 20px; margin: 10px; padding: 10px 0; display: inline-block; }
     div#demo a { background: #527580; color: #fff; }
     div.class { background: #def; }
   </style>
@@ -27,14 +27,14 @@
 </head>
 <body>
   <br>
-  <h1>Lazy</h1>
+  <h1>Lazy.js</h1>
   <br>
-  <h3>Too lazy to write long cross-browser JavaScript?</h3>
+  <h3>Too lazy to write long <u>cross-browser</u> JavaScript?</h3>
   <h3>Too lazy to use jQuery?</h3>
-  <h3>Try Lazy!</h3>
+  <h3>Try Lazy.js!</h3>
   <br>
   <br>
-  <a class=download href="./lazy.min.js">Download (0.5Kb)</a>
+  <a class=download href="./lazy.min.js">Download (0.7Kb)</a>
   <br>
   <p class=center><a href="http://github.com/xem/Lazy">Fork me on Github</a></p>
   <br>
@@ -62,7 +62,7 @@
   <h2>JS Functions</h2>
   <br>
   <p>
-    Lazy.js provides 4 shortcuts for the most useful JavaScript functionnalities:
+    Lazy.js provides 6 shortcuts for the most useful JavaScript functionnalities:
     <br>
     <br>
     &bull; <b>$(query)</b> is a minimal DOM selector.
@@ -76,6 +76,16 @@
     &nbsp; &nbsp; - <span class=code>$(".class")</span> returns the elements with the class "class". <a href="javascript:;" onclick='alert($(".class").length + " elements have this class")'>try it!</a>
     <br>
     &nbsp; &nbsp; - <span class=code>$("div")</span> returns the div elements. <a href="javascript:;" onclick='alert($("div").length + " elements have this tag name")'>try it!</a>
+    <br>
+    <br>
+    <br>
+    &bull; <b>remove(element)</b> removes an element from the DOM.
+    <br>
+    <br>
+    Example:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>remove($("#remove"))</span> deletes the element with the id "remove". <a href="javascript:;" onclick='remove($("#remove"))'>try it!</a>
     <br>
     <br>
     <br>
@@ -124,6 +134,24 @@
     &nbsp; &nbsp; - <span class=code>css($("#id"), "width", "50px")</span>
     <br>
     &nbsp; &nbsp; &nbsp; sets a 50px width to the element "id". <a href="javascript:;" onclick='css($("#id"), "width", "50px")'>try it!</a>
+        <br>
+    <br>
+    <br>
+    &bull; <b>each(elements, func)</b> calls a function for each element of a NodeList.
+    <br>
+    In the function, <span class=code>this</span> represents the current element.
+    <br>
+    The function also works if <span class=code>elements</span> is a single element and not a list. 
+    <!--br-->
+    <!--Note that Lazy's <b>remove</b>, <b>on</b>, <b>off</b> and <b>css</b> already accept NodeLists. -->
+    <br>
+    <br>
+    Example:
+    <br>
+    <br>
+    &nbsp; &nbsp; - <span class=code>each($("div"), function(){alert(this.innerHTML)})</span>
+    <br>
+    &nbsp; &nbsp; &nbsp; shows the HTML code inside each div on the right. <a href="javascript:;" onclick='each($("div"), function(){alert(this.innerHTML)})'>try it!</a>
   </p>
   <br>
   <div id=demo>
@@ -132,6 +160,7 @@
     <a href="javascript:;" id="id">a#id</a>
     <div class="class">div.class</div>
     <div class="class">div.class</div>
+    <div id="remove">div#remove</div>
     <div>another div</div>
   </div>
   <br>
