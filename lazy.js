@@ -1,11 +1,45 @@
 /** Objects **/
-var
+
 $w = window,
 $n = navigator,
 $d = document,
 $r = $d.documentElement,
 $h = $("head")[0],
-$b = $("body")[0];
+$b = $("body")[0],
+
+/** Tests **/
+
+// mobile
+$m = $n.userAgent.indexOf("mobile") >= 0,
+
+// IE
+$ie = $n.appVersion.match(/MSIE ([\d.]+)/);
+$ie = $ie ? $ie[1] : 0;
+
+/** Shims **/
+
+// HTML5 elements on IE
+'AbbrArticleAsideAudioCanvasDetailsFigureFooterHeaderHgroupMarkMenuMeterNavOutputProgressSectionTimeVideo'.replace(/.[a-z]+/g,function(n){document.createElement(n)})
+
+// getComputedStyle() & getPropertieValue()
+if (!$w.getComputedStyle){
+  window.getComputedStyle = function(el, pseudo){
+    this.el = el;
+    this.getPropertyValue = function(prop){
+      var re = /(\-([a-z]){1})/g;
+      if (prop == 'float'){
+        prop = 'styleFloat';
+      }
+      if (re.test(prop)){
+        prop = prop.replace(re, function (){
+          return arguments[2].toUpperCase();
+        });
+      }
+      return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+    }
+    return this;
+  }
+}
 
 /** Functions **/
 
@@ -15,7 +49,7 @@ function $(query){
     return $d.getElementById(query.substr(1));
   }
   else if(query.charAt(0) == "."){
-    if(document.getElementsByClassName){
+    if($d.getElementsByClassName){
       return $d.getElementsByClassName(query.substr(1));
     }
     else{
@@ -57,25 +91,6 @@ function off(element, event, func){
 }
 
 // CSS getter and setter
-if (!window.getComputedStyle){
-  window.getComputedStyle = function(el, pseudo){
-    this.el = el;
-    this.getPropertyValue = function(prop){
-      var re = /(\-([a-z]){1})/g;
-      if (prop == 'float'){
-        prop = 'styleFloat';
-      }
-      if (re.test(prop)){
-        prop = prop.replace(re, function (){
-          return arguments[2].toUpperCase();
-        });
-      }
-      return el.currentStyle[prop] ? el.currentStyle[prop] : null;
-    }
-    return this;
-  }
-}
-
 function css(element, prop, value){
   if(value){
     element.style[prop] = value;
@@ -85,8 +100,10 @@ function css(element, prop, value){
   }
 }
 
+// Iterator
 function each(array, func){
-  for(var i = 0; i < array.length; i++){
+  var i, len = array.length;
+  for(i = 0; i < l ; i++){
     func.call(array[i]);
   }
 }

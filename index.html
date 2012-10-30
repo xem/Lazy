@@ -6,16 +6,18 @@
   <style>
     * { margin: 0; padding: 0; }
     html { background: #123456; }
-    body { background: #abcdef; width: 570px; margin: 0 auto; padding: 20px; font-family: arial; }
+    body { background: #abcdef; width: 580px; margin: 0 auto; padding: 20px; font-family: arial; }
     h1, h2, h3 { text-align: center; }
-    h3 { color: #fff; }
+    h1 { font-size: 50px; }
+    h2 { font-size: 18px; }
+    h3 { color: #fff; font-size: 24px; text-shadow: 2px 2px 2px #000; }
     a { color: #aa0000; padding: 3px; }
     a.download { color: #fff; display: block; width: 200px; line-height: 50px; margin: 0 auto; text-align: center; background: #527580; border-radius: 5px; box-shadow: 5px 5px 5px #555; border: 2px solid #123456; }
     div { background: #fff; width: 300px; height: 20px; margin: 0 auto; }
     span.code { border: 1px dotted red; background: #fff; padding: 2px 5px; font-family: monospace; }
     p { line-height: 25px; }
     p.center { text-align: center; }
-    div#demo { position: fixed; _position: relative; right: 0; top: 50%; margin-top: -175px; background: #000; width: 150px; height: 350px; text-align: center; color: #fff; border-radius: 5px 0 0 5px; }
+    div#demo { position: fixed; _position: relative; right: 0; top: 50%; margin-top: -175px; padding: 10px 0 0; background: #000; width: 150px; height: 350px; text-align: center; color: #fff; border-radius: 5px 0 0 5px; }
     div#demo * { color: #000; width: 100px; height: 20px; margin: 10px; padding: 10px 0; display: inline-block; }
     div#demo a { background: #527580; color: #fff; }
     div.class { background: #def; }
@@ -34,9 +36,26 @@
   <h3>Try Lazy.js!</h3>
   <br>
   <br>
-  <a class=download href="./lazy.min.js">Download (1Kb)</a>
+  <a class=download href="./lazy.min.js">Download (0,7Kb)</a>
   <br>
   <p class=center><a href="http://github.com/xem/Lazy">Fork me on Github</a></p>
+  <br>
+  <br>
+  <br>
+  <h3>How to use it?</h3>
+  <br>
+  <br>
+  <p class="center">
+    Just load lazy.min.js in your &lt;head&gt;:
+    <br>
+    <span class=code>&lt;script src=lazy.min.js&gt;&lt;/script&gt;</span>
+  </p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3>What's inside?</h3>
+  <br>
   <br>
   <br>
   <h2>JS Objects</h2>
@@ -45,18 +64,32 @@
     Lazy.js provides 6 shortcuts for the most used JavaScript native objects:
     <br>
     <br>
-    &bull; <span class=code>$w</span> is a shortcut for the window object.
+    &bull; <span class=code>$w</span> is a shortcut for the <b>window</b> object.
     <br>
-    &bull; <span class=code>$n</span> is a shortcut for the navigator object.
+    &bull; <span class=code>$n</span> is a shortcut for the <b>navigator</b> object.
     <br>
-    &bull; <span class=code>$d</span> is a shortcut for the document object.
+    &bull; <span class=code>$d</span> is a shortcut for the <b>document</b> object.
     <br>
-    &bull; <span class=code>$r</span> is a shortcut for the root element (&lt;html&gt;).
+    &bull; <span class=code>$r</span> is a shortcut for the root element (<b>&lt;html&gt;</b>).
     <br>
-    &bull; <span class=code>$h</span> is a shortcut for the &lt;head&gt; element.
+    &bull; <span class=code>$h</span> is a shortcut for the <b>&lt;head&gt;</b> element.
     <br>
-    &bull; <span class=code>$b</span> is a shortcut for the &lt;body&gt; element.
+    &bull; <span class=code>$b</span> is a shortcut for the <b>&lt;body&gt;</b> element.
   </p>
+  <br>
+  <br>
+  <br>
+  <h2>JS tests</h2>
+  <br>
+  <p>
+    Lazy.js provides 2 ready-to-use test results:
+    <br>
+    <br>
+    &bull; <span class=code>$m</span> is <b>true</b> on mobiles and tablets, <b>false</b> on desktops and TVs. <a href="javascript:;" onclick='alert($m)'>try it!</a>
+    <br>
+    &bull; <span class=code>$ie</span> contains the current <b>IE version</b> on IE , <b>0</b> on other browsers. <a href="javascript:;" onclick='alert("$ie = " + $ie); alert("($ie && $ie < 9) = " + !!($ie && $ie < 9))'>try it!</a>
+  </p>
+  <br>
   <br>
   <br>
   <h2>JS Functions</h2>
@@ -148,6 +181,22 @@
     &nbsp; &nbsp; - <span class=code>each($("div"), function(){alert(this.innerHTML)})</span>
     <br>
     &nbsp; &nbsp; &nbsp; shows the HTML code inside each div on the right. <a href="javascript:;" onclick='each($("div"), function(){alert(this.innerHTML)})'>try it!</a>
+  </p>
+  <br>
+  <br>
+  <br>
+  <h2>JS shims</h2>
+  <br>
+  <p>
+    Lazy.js provides 2 shims for a better IE support:
+    <br>
+    <br>
+    &bull; <span class=code>window.getComputedStyle(elem).getPropertyValue(prop)</span>
+    <br>
+    to get the computed style of an element. (used in <b>css()</b>)
+    <br>
+    <br>
+    &bull; a mini <b>HTML5 shim</b> to allow HTML5 elements to have CSS or children on IE&lt;9.
   </p>
   <br>
   <div id=demo>
