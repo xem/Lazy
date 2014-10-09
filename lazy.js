@@ -103,7 +103,7 @@ function css(element, prop, value){
 // Iterator
 function each(array, func){
   var i, len = array.length;
-  for(i = 0; i < l ; i++){
+  for(i = 0; i < len ; i++){
     func.call(array[i]);
   }
 }
